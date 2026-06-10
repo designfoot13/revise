@@ -3,257 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HGGSP 2026 - Objectif Mention !</title>
+    <title>HGGSP Bac 2026 - Réussir à 20/20 !</title>
     <style>
         :root {
-            --bg-color: #f4f6f9;
-            --primary: #2c3e50;
-            --secondary: #e74c3c;
-            --accent: #3498db;
-            --text: #333;
-            --light-bg: #fff;
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #4fc3f7;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
         }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text);
             margin: 0;
             padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
         }
-
+        
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
+            padding: 2rem 0;
             text-align: center;
-            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
         header p {
+            margin: 0.5rem 0 0;
             font-size: 1.2rem;
-            color: #bdc3c7;
+            opacity: 0.9;
         }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #1a252f;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav button {
-            background: none;
-            border: none;
-            color: white;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: var(--accent);
-        }
-
+        
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-
-        .section {
-            display: none;
-            background: var(--light-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Style des Fiches */
-        .theme-card {
-            border-left: 5px solid var(--accent);
-            padding: 1rem 1.5rem;
+        
+        .intro {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
-            background-color: #f8fbff;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .theme-card h3 {
-            color: var(--primary);
-            margin-top: 0;
-            font-size: 1.5rem;
-        }
-
-        .theme-card h4 {
-            color: var(--accent);
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 0.3rem;
-        }
-
-        .theme-card ul {
-            padding-left: 1.5rem;
-        }
-
-        .highlight {
-            font-weight: bold;
-            color: var(--secondary);
-        }
-
-        /* Style du Quiz & Jeu */
-        .btn {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 1rem;
-            transition: 0.2s;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-        }
-
-        .btn-choice {
-            display: block;
-            width: 100%;
-            margin: 0.5rem 0;
-            background-color: #ecf0f1;
-            color: var(--primary);
-            text-align: left;
-        }
-
-        .btn-choice:hover {
-            background-color: #d5dbdb;
-        }
-
-        #quiz-result, #game-result {
-            margin-top: 1.5rem;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .game-scenario {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
             text-align: center;
         }
+        
+        .intro h2 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+        
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .theme-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-top: 5px solid var(--accent);
+        }
+        
+        .theme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .theme-card h3 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+        
+        .theme-card p {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .theme-card .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .theme-card .btn:hover {
+            background: var(--secondary);
+        }
+        
+        .features {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .features h2 {
+            color: var(--secondary);
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .feature-item i {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--warning);
+            color: var(--dark);
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .themes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
     <header>
-        <h1>🌍 HGGSP - Objectif Bac 2026</h1>
-        <p>Les 4 thèmes de l'année paire au programme. Révise, teste-toi, et détends-toi.</p>
+        <h1>HGGSP Bac 2026 <span class="badge">20/20</span></h1>
+        <p>Le site ultime pour cartonner à l'épreuve de spécialité</p>
     </header>
-
-    <nav>
-        <button class="nav-btn active" onclick="showSection('fiches')">📚 Fiches Complètes</button>
-        <button class="nav-btn" onclick="showSection('quiz')">📝 Quiz du Bac</button>
-        <button class="nav-btn" onclick="showSection('jeux')">🎮 Survie Diplomatique</button>
-    </nav>
-
+    
     <div class="container">
+        <div class="intro">
+            <h2>Bienvenue sur ton coach personnel pour le Bac HGGSP 2026 !</h2>
+            <p>Ici, tu trouveras <strong>tout</strong> pour maîtriser les 4 thèmes au programme cette année : fiches ultra-complètes, quiz interactifs, jeux pour réviser en t'amusant, et même des conseils méthodo pour les disserts et études de docs. Prêt·e à décoller vers la mention Très Bien ?</p>
+        </div>
         
-        <!-- SECTION FICHES -->
-        <section id="fiches" class="section active">
-            <h2>Fiches de Révision Hautes Caleurs Ajoutées 🧠</h2>
+        <h2 style="color: var(--secondary); text-align: center; margin-bottom: 1.5rem;">📚 Les 4 thèmes à réviser en 2026</h2>
+        
+        <div class="themes-grid">
+            <!-- Thème 1 -->
+            <div class="theme-card">
+                <h3>🔥 Faire la guerre, faire la paix</h3>
+                <p>Formes de conflits, modes de résolution, diplomatie, Clausewitz, ONU, Moyen-Orient...</p>
+                <a href="theme1.html" class="btn">Accéder au thème</a>
+            </div>
             
+            <!-- Thème 2 -->
             <div class="theme-card">
-                <h3>🚀 Thème 1 : De nouveaux espaces de conquête</h3>
-                <p>Océans et espace extra-atmosphérique : des frontières repoussées (New Frontier).</p>
-                <h4>Repères et Concepts Clés</h4>
-                <ul>
-                    <li><span class="highlight">Océans :</span> Convention de Montego Bay (1982) créant l'institutionnalisation des ZEE (Zones Économiques Exclusives).</li>
-                    <li><span class="highlight">Thalassocratie vs Sea Power :</span> Mahan théorisait l'importance de la domination des mers. Aujourd'hui, la Chine (Collier de Perles) conteste la domination américaine.</li>
-                    <li><span class="highlight">Espace :</span> De la course bipolarisée (Guerre Froide, Spoutnik 1957, Apollo 1969) au "New Space" actuel dominé par le secteur privé (SpaceX, Blue Origin).</li>
-                    <li><span class="highlight">Coopération et Rivalités :</span> L'ISS est un modèle de coopération (bien que fragilisé aujourd'hui) ; l'Arctique devient un espace de rivalités à cause de la fonte des glaces.</li>
-                </ul>
+                <h3>🚀 De nouveaux espaces de conquête</h3>
+                <p>Espace, océans, Chine, États-Unis, rivalités, coopération, New Space...</p>
+                <a href="theme2.html" class="btn">Accéder au thème</a>
             </div>
-
-            <div class="theme-card">
-                <h3>⚔️ Thème 2 : Faire la guerre, faire la paix</h3>
-                <p>Comprendre la nature évolutive des conflits et les défis de l'édification de la paix.</p>
-                <h4>Repères et Concepts Clés</h4>
-                <ul>
-                    <li><span class="highlight">Carl von Clausewitz :</span> La guerre comme "continuation de la politique par d'autres moyens". Distinction entre <i>guerre réelle</i> (limitée) et <i>guerre absolue</i> (anéantissement de l'adversaire).</li>
-                    <li><span class="highlight">Guerre irrégulière/asymétrique :</span> Un acteur non étatique (Al-Qaida, Daech) contre un État. Brouillage de la frontière entre civils et militaires.</li>
-                    <li><span class="highlight">Faire la Paix :</span> Traités de Westphalie (1648) introduisant la souveraineté étatique et l'équilibre des puissances en Europe.</li>
-                    <li><span class="highlight">Sécurité Collective :</span> SDN puis ONU. Le rôle de Kofi Annan (diplomatie préventive, "Responsabilité de Protéger"). Le Moyen-Orient reste un complexe de sécurité fracturé.</li>
-                </ul>
-            </div>
-
-            <div class="theme-card">
-                <h3>⚖️ Thème 3 : Histoire et mémoires</h3>
-                <p>Comment les sociétés gèrent leur passé traumatique : justice, vérité et lois.</p>
-                <h4>Repères et Concepts Clés</h4>
-                <ul>
-                    <li><span class="highlight">Guerre d'Algérie :</span> Une "guerre sans nom" jusqu'en 1999. Concurrence des mémoires (Pieds-noirs, Harkis, appelés, FLN). Loi de 2005 (rôle positif de la colonisation) vs reconnaissance des tortures par Macron.</li>
-                    <li><span class="highlight">Rwanda :</span> Génocide des Tutsi (1994). Comment rejuger ? Le TPIR (justice internationale) et les juridictions <i>Gacaca</i> (justice locale réparatrice, vérité et pardon).</li>
-                    <li><span class="highlight">TPIY (Ex-Yougoslavie) :</span> Premier tribunal pénal international depuis Nuremberg, pour juger les crimes (Srebrenica) et rétablir la paix dans les Balkans.</li>
-                </ul>
-            </div>
-
-            <div class="theme-card">
-                <h3>🌳 Thème 5 : L’environnement, entre exploitation et protection</h3>
-                <p>Évolution des rapports des sociétés à leurs milieux, des origines à l'Anthropocène.</p>
-                <h4>Repères et Concepts Clés</h4>
-                <ul>
-                    <li><span class="highlight">Histoire du Climat :</span> De l'Optimum médiéval au Petit Âge Glaciaire, jusqu'au basculement post-révolution industrielle (l'Anthropocène).</li>
-                    <li><span class="highlight">Forêt française :</span> Ressource stratégique depuis Colbert (Ordonnance de 1669 pour la marine). Aujourd'hui gérée par l'ONF (protection vs loisirs vs industrie).</li>
-                    <li><span class="highlight">Rôle des États-Unis :</span> Les pionniers de la protection ("Wilderness", parcs nationaux comme Yellowstone - 1872) mais aussi l'un des plus grands pollueurs. Retrait puis retour dans les accords de Paris. Facteur clé : l'action environnementale passe souvent par les États fédérés (ex: Californie).</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- SECTION QUIZ -->
-        <section id="quiz" class="section">
-            <h2>📝 Le Grand Quiz du Bac</h2>
-            <p>Teste tes connaissances. Pas de panique, c'est pour s'entraîner !</p>
-            <div id="quiz-container">
-                <h3 id="question-text"></h3>
-                <div id="options-container"></div>
-                <p id="quiz-result"></p>
-                <button id="next-btn" class="btn" style="display:none;" onclick="nextQuestion()">Question Suivante</button>
-            </div>
-        </section>
-
-        <!-- SECTION JEU -->
-        <section id="jeux" class="section">
-            <h2>🎮 Jeu : Survie Diplomatique</h2>
-            <p>Glisse-toi dans la peau du Secrétaire Général de l'ONU ou d'un dirigeant mondial. Prends les bonnes décisions... ou provoque la Troisième Guerre Mondiale.</p>
             
-            <div id="game-container" style="background:#f9e79f; padding: 2rem; border-radius: 8px;">
-                <p class="game-scenario" id="scenario-text">L'ambassadeur du Syldavie refuse de vous serrer la main et menace d'envoyer des satellites lasers. Que faites-vous ?</p>
-                <div id="game-choices">
-                    <button class="btn btn-choice" onclick="playGame(1)">A. Je cite le traité de l'espace de 1967 pour le calmer.</button>
-                    <button class="btn btn-choice" onclick="playGame(2)">B. J'annexe sa ZEE selon la méthode de Poutine, ça lui apprendra.</button>
+            <!-- Thème 3 -->
+            <div class="theme-card">
+                <h3>⚖️ Histoire, mémoire et justice</h3>
+                <p>Crimes contre l'humanité, tribunaux internationaux, devoir de mémoire, réconciliation...</p>
+                <a href="theme3.html" class="btn">Accéder au thème</a>
+            </div>
+            
+            <!-- Thème 4 -->
+            <div class="theme-card">
+                <h3>🌍 L'environnement</h3>
+                <p>Changement climatique, accords internationaux, enjeux géopolitiques, développement durable...</p>
+                <a href="theme4.html" class="btn">Accéder au thème</a>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h2>✨ Ce que tu vas trouver sur ce site</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span><strong>Fiches ultra-complètes</strong> avec toutes les notions, dates, exemples et citations à connaître</span>
                 </div>
-                <p id="game-result"></p>
-                <button id="restart-game" class="btn" style="display:none;" onclick="initGame()">Recommencer un mandat</button>
+                <div class="feature-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span><strong>Quiz interactifs</strong> pour tester tes connaissances en temps réel</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-gamepad"></i>
+                    <span><strong>Jeux drôles</strong> : memory, pendu, défis chrono, cartes interactives...</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span><strong>Méthodologie</strong> : plans types, sujets probables, annales corrigées</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span><strong>Suivi de progression</strong> pour savoir où tu en es</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span><strong>100% responsive</strong> : révise sur ton tel, ta tablette ou ton PC</span>
+                </div>
             </div>
-        </section>
-
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center;">
+            <h2 style="color: var(--secondary); margin-top: 0;">🎯 Comment utiliser ce site ?</h2>
+            <p>1. <strong>Choisis un thème</strong> dans la grille ci-dessus.</p>
+            <p>2. <strong>Lis la fiche complète</strong> avec toutes les connaissances clés.</p>
+            <p>3. <strong>Entraîne-toi avec les quiz</strong> pour vérifier que tu as tout retenu.</p>
+            <p>4. <strong>Joue pour réviser</strong> en t'amusant (et sans t'en rendre compte !).</p>
+            <p>5. <strong>Consulte la méthodo</strong> pour être prêt·e le jour J.</p>
+            <p style="margin-top: 1rem; font-style: italic; color: var(--secondary);">➡️ <strong>Astuce</strong> : Commence par le thème que tu maîtrises le moins !</p>
+        </div>
     </div>
-
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // --- NAVIGATION ---
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    
+    <footer>
+        <p><strong>HGGSP Bac 2026</strong> - Créé avec ❤️ pour toi par Vibe (Mistral AI)</p>
+        <p>Dernière mise à jour : juin 2026 | Programme officiel 2026</p>
+    </footer>
+</body>
+</html>
