@@ -14,64 +14,183 @@
             --success: #28a745;
             --warning: #ffc107;
             --danger: #dc3545;
+            --info: #17a2b8;
         }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
         }
-        
+
+        /* Header */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 2rem 0;
+            padding: 1.5rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        
+
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2rem;
         }
-        
+
         header p {
             margin: 0.5rem 0 0;
-            font-size: 1.2rem;
             opacity: 0.9;
         }
-        
-        .container {
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.3rem;
+            border: none;
+            background: var(--light);
+            color: var(--secondary);
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .nav-tab:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Contenu principal */
+        .main-content {
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 1rem auto;
             padding: 0 1rem;
         }
-        
-        .intro {
+
+        .section {
             background: white;
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-            text-align: center;
+            margin-bottom: 1.5rem;
         }
-        
-        .intro h2 {
+
+        .section h2 {
             color: var(--secondary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
             margin-top: 0;
         }
-        
+
+        .section h3 {
+            color: var(--primary);
+            margin-top: 1.5rem;
+        }
+
+        /* Notions, dates, exemples */
+        .notion-box, .date-box, .example-box {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+
+        .notion-box {
+            background: #e7f3ff;
+            border-color: var(--accent);
+        }
+
+        .date-box {
+            background: #fff3cd;
+            border-color: var(--warning);
+            font-weight: bold;
+        }
+
+        .example-box {
+            background: #d4edda;
+            border-color: var(--success);
+        }
+
+        .citation {
+            font-style: italic;
+            color: var(--secondary);
+            border-left: 2px solid var(--secondary);
+            padding-left: 1rem;
+            margin: 1rem 0;
+        }
+
+        /* Boutons */
+        .btn, .quiz-btn, .game-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.3rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+        }
+
+        .quiz-btn {
+            background: var(--success);
+            color: white;
+        }
+
+        .quiz-btn:hover {
+            background: #218838;
+        }
+
+        .game-btn {
+            background: var(--warning);
+            color: var(--dark);
+        }
+
+        .game-btn:hover {
+            background: #e0a800;
+        }
+
+        /* Grille des thèmes */
         .themes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
-        
+
         .theme-card {
             background: white;
             border-radius: 10px;
@@ -79,71 +198,163 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            border-top: 5px solid var(--accent);
         }
-        
+
         .theme-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
-        
+
         .theme-card h3 {
             color: var(--secondary);
             margin-top: 0;
         }
-        
-        .theme-card p {
-            color: var(--dark);
-            margin-bottom: 1rem;
+
+        .theme-card .theme-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
-        
-        .theme-card .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        
-        .theme-card .btn:hover {
-            background: var(--secondary);
-        }
-        
-        .features {
+
+        /* Quiz et Jeux */
+        .quiz-container, .game-container {
             background: white;
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
-        
-        .features h2 {
-            color: var(--secondary);
-            text-align: center;
-            margin-top: 0;
+
+        .quiz-question, .game-instructions {
+            margin-bottom: 1rem;
+            font-weight: bold;
         }
-        
-        .features-grid {
+
+        .quiz-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 0.5rem;
+            margin-bottom: 1rem;
         }
-        
-        .feature-item i {
-            color: var(--accent);
-            font-size: 1.5rem;
+
+        .quiz-option {
+            background: var(--light);
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
         }
-        
+
+        .quiz-option:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .quiz-option.selected {
+            background: var(--primary);
+            color: white;
+        }
+
+        .quiz-option.correct {
+            background: var(--success);
+            color: white;
+        }
+
+        .quiz-option.incorrect {
+            background: var(--danger);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .quiz-feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        /* Memory Game */
+        .memory-game {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .memory-card {
+            background: var(--primary);
+            color: white;
+            height: 80px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            perspective: 1000px;
+        }
+
+        .memory-card.flipped {
+            background: var(--success);
+            transform: rotateY(180deg);
+        }
+
+        /* Pendu Game */
+        .pendu-game {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .pendu-word {
+            font-size: 2rem;
+            letter-spacing: 0.5rem;
+            margin: 1rem 0;
+            min-height: 3rem;
+        }
+
+        .pendu-letters {
+            margin: 1rem 0;
+        }
+
+        .pendu-letter {
+            display: inline-block;
+            padding: 0.5rem;
+            margin: 0.2rem;
+            background: var(--light);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pendu-letter:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .pendu-letter.used {
+            background: #ddd;
+            cursor: not-allowed;
+        }
+
+        .pendu-hangman {
+            font-size: 3rem;
+            margin: 1rem 0;
+            color: var(--danger);
+        }
+
+        /* Footer */
         footer {
             background: var(--dark);
             color: white;
@@ -151,117 +362,784 @@
             padding: 1.5rem;
             margin-top: 2rem;
         }
-        
-        .badge {
-            display: inline-block;
-            background: var(--warning);
-            color: var(--dark);
-            padding: 0.2rem 0.5rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-left: 0.5rem;
-        }
-        
+
+        /* Responsive */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .themes-grid {
                 grid-template-columns: 1fr;
             }
+            .memory-game {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Cacher les sections par défaut */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>HGGSP Bac 2026 <span class="badge">20/20</span></h1>
-        <p>Le site ultime pour cartonner à l'épreuve de spécialité</p>
+        <h1>📚 HGGSP Bac 2026 - Réussir à 20/20 !</h1>
+        <p>Fiches ultra-complètes, quiz et jeux pour cartonner</p>
     </header>
-    
-    <div class="container">
-        <div class="intro">
-            <h2>Bienvenue sur ton coach personnel pour le Bac HGGSP 2026 !</h2>
-            <p>Ici, tu trouveras <strong>tout</strong> pour maîtriser les 4 thèmes au programme cette année : fiches ultra-complètes, quiz interactifs, jeux pour réviser en t'amusant, et même des conseils méthodo pour les disserts et études de docs. Prêt·e à décoller vers la mention Très Bien ?</p>
-        </div>
-        
-        <h2 style="color: var(--secondary); text-align: center; margin-bottom: 1.5rem;">📚 Les 4 thèmes à réviser en 2026</h2>
-        
-        <div class="themes-grid">
-            <!-- Thème 1 -->
-            <div class="theme-card">
-                <h3>🔥 Faire la guerre, faire la paix</h3>
-                <p>Formes de conflits, modes de résolution, diplomatie, Clausewitz, ONU, Moyen-Orient...</p>
-                <a href="theme1.html" class="btn">Accéder au thème</a>
+
+    <div class="nav-tabs">
+        <button class="nav-tab active" onclick="showTab('accueil')">🏠 Accueil</button>
+        <button class="nav-tab" onclick="showTab('theme1')">🔥 Thème 1 : Guerre/Paix</button>
+        <button class="nav-tab" onclick="showTab('theme2')">🚀 Thème 2 : Espaces de conquête</button>
+        <button class="nav-tab" onclick="showTab('theme3')">⚖️ Thème 3 : Histoire/Mémoire/Justice</button>
+        <button class="nav-tab" onclick="showTab('theme4')">🌍 Thème 4 : Environnement</button>
+    </div>
+
+    <div class="main-content">
+        <!-- Accueil -->
+        <div id="accueil" class="tab-content active">
+            <div class="section">
+                <h2>Bienvenue sur ton site de révision HGGSP Bac 2026 !</h2>
+                <p>Ici, tu trouveras <strong>tout</strong> pour maîtriser les 4 thèmes au programme :
+                    <strong>fiches ultra-complètes</strong>, <strong>quiz interactifs</strong>, et <strong>4 jeux par thème</strong> (Memory, Pendu, QCM aléatoire, Carte interactive).
+                </p>
+                <p>➡️ <strong>Commence par choisir un thème dans le menu ci-dessus !</strong></p>
             </div>
-            
-            <!-- Thème 2 -->
-            <div class="theme-card">
-                <h3>🚀 De nouveaux espaces de conquête</h3>
-                <p>Espace, océans, Chine, États-Unis, rivalités, coopération, New Space...</p>
-                <a href="theme2.html" class="btn">Accéder au thème</a>
-            </div>
-            
-            <!-- Thème 3 -->
-            <div class="theme-card">
-                <h3>⚖️ Histoire, mémoire et justice</h3>
-                <p>Crimes contre l'humanité, tribunaux internationaux, devoir de mémoire, réconciliation...</p>
-                <a href="theme3.html" class="btn">Accéder au thème</a>
-            </div>
-            
-            <!-- Thème 4 -->
-            <div class="theme-card">
-                <h3>🌍 L'environnement</h3>
-                <p>Changement climatique, accords internationaux, enjeux géopolitiques, développement durable...</p>
-                <a href="theme4.html" class="btn">Accéder au thème</a>
-            </div>
-        </div>
-        
-        <div class="features">
-            <h2>✨ Ce que tu vas trouver sur ce site</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <i class="fas fa-file-alt"></i>
-                    <span><strong>Fiches ultra-complètes</strong> avec toutes les notions, dates, exemples et citations à connaître</span>
+
+            <h2 class="section-title">📚 Les 4 thèmes à réviser en 2026</h2>
+            <div class="themes-grid">
+                <div class="theme-card">
+                    <i class="fas fa-fire-alt theme-icon"></i>
+                    <h3>Faire la guerre, faire la paix</h3>
+                    <p>Formes de conflits, diplomatie, ONU, Moyen-Orient, Clausewitz...</p>
+                    <a href="#theme1" class="btn" onclick="showTab('theme1')">Accéder</a>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-question-circle"></i>
-                    <span><strong>Quiz interactifs</strong> pour tester tes connaissances en temps réel</span>
+                <div class="theme-card">
+                    <i class="fas fa-rocket theme-icon"></i>
+                    <h3>De nouveaux espaces de conquête</h3>
+                    <p>Espace, océans, Chine, États-Unis, rivalités, New Space...</p>
+                    <a href="#theme2" class="btn" onclick="showTab('theme2')">Accéder</a>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-gamepad"></i>
-                    <span><strong>Jeux drôles</strong> : memory, pendu, défis chrono, cartes interactives...</span>
+                <div class="theme-card">
+                    <i class="fas fa-balance-scale theme-icon"></i>
+                    <h3>Histoire, mémoire et justice</h3>
+                    <p>Crimes contre l'humanité, tribunaux, devoir de mémoire...</p>
+                    <a href="#theme3" class="btn" onclick="showTab('theme3')">Accéder</a>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-lightbulb"></i>
-                    <span><strong>Méthodologie</strong> : plans types, sujets probables, annales corrigées</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span><strong>Suivi de progression</strong> pour savoir où tu en es</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span><strong>100% responsive</strong> : révise sur ton tel, ta tablette ou ton PC</span>
+                <div class="theme-card">
+                    <i class="fas fa-globe-americas theme-icon"></i>
+                    <h3>L'environnement</h3>
+                    <p>Climat, accords internationaux, enjeux géopolitiques...</p>
+                    <a href="#theme4" class="btn" onclick="showTab('theme4')">Accéder</a>
                 </div>
             </div>
         </div>
-        
-        <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center;">
-            <h2 style="color: var(--secondary); margin-top: 0;">🎯 Comment utiliser ce site ?</h2>
-            <p>1. <strong>Choisis un thème</strong> dans la grille ci-dessus.</p>
-            <p>2. <strong>Lis la fiche complète</strong> avec toutes les connaissances clés.</p>
-            <p>3. <strong>Entraîne-toi avec les quiz</strong> pour vérifier que tu as tout retenu.</p>
-            <p>4. <strong>Joue pour réviser</strong> en t'amusant (et sans t'en rendre compte !).</p>
-            <p>5. <strong>Consulte la méthodo</strong> pour être prêt·e le jour J.</p>
-            <p style="margin-top: 1rem; font-style: italic; color: var(--secondary);">➡️ <strong>Astuce</strong> : Commence par le thème que tu maîtrises le moins !</p>
+
+        <!-- Thème 1 : Faire la guerre, faire la paix -->
+        <div id="theme1" class="tab-content">
+            <div class="section">
+                <h2>🔥 Thème 1 : Faire la guerre, faire la paix</h2>
+                <p><strong>Problématique</strong> : Comment les sociétés font-elles la guerre et construisent-elles la paix dans un monde en constante évolution géopolitique ?</p>
+
+                <h3>📌 Notions clés</h3>
+                <div class="notion-box">
+                    <strong>Guerre</strong> : Conflit armé entre groupes sociaux organisés, caractérisé par la violence, la réciprocité et des objectifs politiques. <em>(Clausewitz : "La guerre est la continuation de la politique par d’autres moyens")</em>
+                </div>
+                <div class="notion-box">
+                    <strong>Paix</strong> : État d’absence de conflit armé, mais aussi processus actif de résolution des tensions et de reconstruction.
+                </div>
+                <div class="notion-box">
+                    <strong>Conflit interétatique</strong> : Guerre entre États souverains (ex : Guerre de Sept Ans, guerres napoléoniennes).
+                </div>
+                <div class="notion-box">
+                    <strong>Conflit asymétrique</strong> : Opposition entre un État et un acteur non étatique (ex : terrorisme, guérillas).
+                </div>
+                <div class="notion-box">
+                    <strong>Diplomatie</strong> : Art de négocier entre États pour éviter ou résoudre les conflits.
+                </div>
+                <div class="notion-box">
+                    <strong>Sécurité collective</strong> : Système où les États s’engagent à garantir la paix et la sécurité de tous (ex : ONU, OTAN).
+                </div>
+
+                <h3>📅 Dates clés</h3>
+                <div class="date-box">1648 : Traités de Westphalie → Fin des guerres de religion en Europe, naissance de l’État-nation.</div>
+                <div class="date-box">1815 : Congrès de Vienne → Réorganisation de l’Europe après Napoléon.</div>
+                <div class="date-box">1914-1918 : Première Guerre mondiale → Guerre totale, génocide des Arméniens.</div>
+                <div class="date-box">1919 : Traité de Versailles + Création de la SDN → Échec de la paix par la sécurité collective.</div>
+                <div class="date-box">1945 : Création de l’ONU → Nouvelle tentative de sécurité collective.</div>
+                <div class="date-box">2022 : Guerre en Ukraine → Retour de la guerre interétatique en Europe.</div>
+
+                <h3>🎯 Études de cas</h3>
+                <div class="example-box">
+                    <strong>Moyen-Orient : conflits régionaux et tentatives de paix</strong>
+                    <ul>
+                        <li>Conflit israélo-palestinien (depuis 1948).</li>
+                        <li>Guerres israélo-arabes (1948, 1967, 1973).</li>
+                        <li>Accords d’Oslo (1993) : échec de la paix.</li>
+                        <li>Rôle des acteurs internationaux (ONU, États-Unis, UE).</li>
+                    </ul>
+                </div>
+                <div class="example-box">
+                    <strong>Guerre en Ukraine (depuis 2014)</strong>
+                    <ul>
+                        <li>Annexion de la Crimée par la Russie (2014).</li>
+                        <li>Conflit dans le Donbass (séparatistes pro-russes).</li>
+                        <li>Intervention militaire russe (février 2022).</li>
+                        <li>Réponse internationale : sanctions, aide militaire à l’Ukraine.</li>
+                    </ul>
+                </div>
+
+                <h3>📚 Citations à retenir</h3>
+                <div class="citation">
+                    "La guerre est un acte de violence destiné à contraindre l’adversaire à exécuter notre volonté." — Clausewitz, <em>De la guerre</em> (1832)
+                </div>
+                <div class="citation">
+                    "La paix n’est pas l’absence de guerre, c’est une vertu, un état d’esprit, une volonté de bienveillance, de confiance, de justice." — Baruch Spinoza
+                </div>
+
+                <h3>🎮 Jeux et Quiz</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <button class="game-btn" onclick="showGame('memory1')">🧠 Memory (Associer dates/événements)</button>
+                    <button class="game-btn" onclick="showGame('pendu1')">🎯 Pendu (Mots clés du thème)</button>
+                    <button class="quiz-btn" onclick="showGame('quiz1')">❓ QCM (10 questions)</button>
+                </div>
+
+                <!-- Memory Game -->
+                <div id="memory1" class="game-container" style="display: none;">
+                    <h3>🧠 Memory : Associe les dates aux événements</h3>
+                    <p class="game-instructions">Retourne les cartes pour trouver les paires correspondantes.</p>
+                    <div class="memory-game" id="memory-game-1">
+                        <div class="memory-card" onclick="flipCard(this, '1648')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Westphalie')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1815')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Vienne')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1919')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Versailles')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1945')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'ONU')">?</div>
+                    </div>
+                    <button class="btn" onclick="resetMemory('memory-game-1')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('memory1')">Retour</button>
+                </div>
+
+                <!-- Pendu Game -->
+                <div id="pendu1" class="game-container" style="display: none;">
+                    <h3>🎯 Pendu : Trouve le mot clé</h3>
+                    <p class="game-instructions">Devine le mot en proposant des lettres. Tu as 6 erreurs max !</p>
+                    <div class="pendu-game">
+                        <div class="pendu-hangman" id="pendu-hangman-1">😊</div>
+                        <div class="pendu-word" id="pendu-word-1"></div>
+                        <div class="pendu-letters" id="pendu-letters-1"></div>
+                        <div id="pendu-message-1"></div>
+                    </div>
+                    <button class="btn" onclick="resetPendu('1')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('pendu1')">Retour</button>
+                </div>
+
+                <!-- Quiz -->
+                <div id="quiz1" class="game-container" style="display: none;">
+                    <h3>❓ QCM : Teste tes connaissances</h3>
+                    <p class="game-instructions">Réponds aux questions et vérifie tes réponses.</p>
+                    <div id="quiz-container-1"></div>
+                    <div id="quiz-feedback-1" class="quiz-feedback"></div>
+                    <button class="btn" onclick="resetQuiz('1')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('quiz1')">Retour</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thème 2 : De nouveaux espaces de conquête -->
+        <div id="theme2" class="tab-content">
+            <div class="section">
+                <h2>🚀 Thème 2 : De nouveaux espaces de conquête</h2>
+                <p><strong>Problématique</strong> : Comment les États et les acteurs privés conquièrent-ils et exploitent-ils les nouveaux espaces (océans, espace) pour affirmer leur puissance ?</p>
+
+                <h3>📌 Notions clés</h3>
+                <div class="notion-box">
+                    <strong>Espace extra-atmosphérique</strong> : Zone au-delà de l’atmosphère terrestre, objet de rivalités géopolitiques et scientifiques.
+                </div>
+                <div class="notion-box">
+                    <strong>Océans</strong> : Espaces maritimes stratégiques (ressources, routes commerciales, puissance militaire).
+                </div>
+                <div class="notion-box">
+                    <strong>New Space</strong> : Nouvel âge de la conquête spatiale marqué par l’arrivée d’acteurs privés (SpaceX, Blue Origin).
+                </div>
+                <div class="notion-box">
+                    <strong>ZEE (Zone Économique Exclusive)</strong> : Espace maritime de 200 miles où un État a des droits exclusifs sur les ressources.
+                </div>
+                <div class="notion-box">
+                    <strong>Soft Power</strong> : Influence d’un État par des moyens non militaires (science, culture, diplomatie).
+                </div>
+
+                <h3>📅 Dates clés</h3>
+                <div class="date-box">1957 : Lancement de Spoutnik par l’URSS → Début de la course à l’espace.</div>
+                <div class="date-box">1969 : Premier pas sur la Lune (Apollo 11, États-Unis).</div>
+                <div class="date-box">1982 : Convention de Montego Bay → Droit de la mer.</div>
+                <div class="date-box">2003 : Premier taïkonaute chinois dans l’espace.</div>
+                <div class="date-box">2020 : SpaceX devient la première entreprise privée à envoyer des astronautes à l’ISS.</div>
+
+                <h3>🎯 Études de cas</h3>
+                <div class="example-box">
+                    <strong>La Chine, puissance spatiale et maritime</strong>
+                    <ul>
+                        <li>Programme spatial : stations Tiangong, missions lunaires (Chang’e).</li>
+                        <li>Revendications en mer de Chine méridionale (îles Spratleys, Paracels).</li>
+                        <li>Stratégie de la "Route de la Soie maritime".</li>
+                    </ul>
+                </div>
+                <div class="example-box">
+                    <strong>Les États-Unis : leader historique</strong>
+                    <ul>
+                        <li>NASA, SpaceX (Elon Musk), Blue Origin (Jeff Bezos).</li>
+                        <li>Flotte militaire (porte-avions, sous-marins nucléaires).</li>
+                        <li>Alliances (OTAN, AUKUS).</li>
+                    </ul>
+                </div>
+
+                <h3>📚 Citations</h3>
+                <div class="citation">
+                    "L’espace est le dernier front de la guerre froide, mais aussi le premier de la coopération internationale." — John F. Kennedy
+                </div>
+
+                <h3>🎮 Jeux et Quiz</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <button class="game-btn" onclick="showGame('memory2')">🧠 Memory (Acteurs/espaces)</button>
+                    <button class="game-btn" onclick="showGame('pendu2')">🎯 Pendu (Mots clés)</button>
+                    <button class="quiz-btn" onclick="showGame('quiz2')">❓ QCM (10 questions)</button>
+                </div>
+
+                <!-- Memory Game -->
+                <div id="memory2" class="game-container" style="display: none;">
+                    <h3>🧠 Memory : Associe les acteurs aux espaces</h3>
+                    <div class="memory-game" id="memory-game-2">
+                        <div class="memory-card" onclick="flipCard(this, 'Chine')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Tiangong')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'États-Unis')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'NASA')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'SpaceX')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Elon Musk')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Russie')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Spoutnik')">?</div>
+                    </div>
+                    <button class="btn" onclick="resetMemory('memory-game-2')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('memory2')">Retour</button>
+                </div>
+
+                <!-- Pendu Game -->
+                <div id="pendu2" class="game-container" style="display: none;">
+                    <h3>🎯 Pendu : Trouve le mot clé</h3>
+                    <div class="pendu-game">
+                        <div class="pendu-hangman" id="pendu-hangman-2">😊</div>
+                        <div class="pendu-word" id="pendu-word-2"></div>
+                        <div class="pendu-letters" id="pendu-letters-2"></div>
+                        <div id="pendu-message-2"></div>
+                    </div>
+                    <button class="btn" onclick="resetPendu('2')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('pendu2')">Retour</button>
+                </div>
+
+                <!-- Quiz -->
+                <div id="quiz2" class="game-container" style="display: none;">
+                    <h3>❓ QCM : Teste tes connaissances</h3>
+                    <div id="quiz-container-2"></div>
+                    <div id="quiz-feedback-2" class="quiz-feedback"></div>
+                    <button class="btn" onclick="resetQuiz('2')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('quiz2')">Retour</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thème 3 : Histoire, mémoire et justice -->
+        <div id="theme3" class="tab-content">
+            <div class="section">
+                <h2>⚖️ Thème 3 : Histoire, mémoire et justice</h2>
+                <p><strong>Problématique</strong> : Comment les sociétés gèrent-elles le passé traumatique à travers l’histoire, la mémoire et la justice ?</p>
+
+                <h3>📌 Notions clés</h3>
+                <div class="notion-box">
+                    <strong>Histoire</strong> : Discipline scientifique qui étudie le passé de manière critique et objective.
+                </div>
+                <div class="notion-box">
+                    <strong>Mémoire</strong> : Construction subjective et collective du passé, souvent liée à des enjeux identitaires ou politiques.
+                </div>
+                <div class="notion-box">
+                    <strong>Justice transitionnelle</strong> : Mécanismes pour traiter les crimes de masse et faciliter la réconciliation (tribunaux, commissions vérité).
+                </div>
+                <div class="notion-box">
+                    <strong>Crime contre l’humanité</strong> : Acte systématique ou généralisé commis contre une population civile (ex : génocide, esclavage).
+                </div>
+                <div class="notion-box">
+                    <strong>Devoir de mémoire</strong> : Obligation morale de se souvenir et de transmettre les événements traumatiques.
+                </div>
+
+                <h3>📅 Dates clés</h3>
+                <div class="date-box">1945-1946 : Procès de Nuremberg → Jugement des dirigeants nazis.</div>
+                <div class="date-box">1993 : Création du TPIY (Tribunal Pénal International pour l’ex-Yougoslavie).</div>
+                <div class="date-box">1994 : Génocide des Tutsis au Rwanda.</div>
+                <div class="date-box">1998 : Statut de Rome → Création de la CPI (Cour Pénale Internationale).</div>
+                <div class="date-box">2001 : Lois mémorielles en France (reconnaissance de l’esclavage, de la Shoah).</div>
+
+                <h3>🎯 Études de cas</h3>
+                <div class="example-box">
+                    <strong>Le génocide des Tutsis au Rwanda (1994)</strong>
+                    <ul>
+                        <li>800 000 morts en 100 jours.</li>
+                        <li>Rôle de la communauté internationale (échec de l’ONU).</li>
+                        <li>Tribunal Pénal International pour le Rwanda (TPIR).</li>
+                        <li>Commissions Gacaca (justice locale).</li>
+                    </ul>
+                </div>
+                <div class="example-box">
+                    <strong>La guerre d’Algérie (1954-1962)</strong>
+                    <ul>
+                        <li>Conflit colonial et guerre d’indépendance.</li>
+                        <li>Torture, disparus, harkis.</li>
+                        <li>Mémoire conflictuelle en France et en Algérie.</li>
+                        <li>Reconnaissance tardive par l’État français.</li>
+                    </ul>
+                </div>
+
+                <h3>📚 Citations</h3>
+                <div class="citation">
+                    "La mémoire est un combat, l’oubli une capitulation." — Primo Levi
+                </div>
+                <div class="citation">
+                    "La justice sans la force est impuissante ; la force sans la justice est tyrannique." — Blaise Pascal
+                </div>
+
+                <h3>🎮 Jeux et Quiz</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <button class="game-btn" onclick="showGame('memory3')">🧠 Memory (Événements/justice)</button>
+                    <button class="game-btn" onclick="showGame('pendu3')">🎯 Pendu (Mots clés)</button>
+                    <button class="quiz-btn" onclick="showGame('quiz3')">❓ QCM (10 questions)</button>
+                </div>
+
+                <!-- Memory Game -->
+                <div id="memory3" class="game-container" style="display: none;">
+                    <h3>🧠 Memory : Associe les événements aux mécanismes de justice</h3>
+                    <div class="memory-game" id="memory-game-3">
+                        <div class="memory-card" onclick="flipCard(this, 'Nuremberg')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1945')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Rwanda')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1994')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'CPI')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1998')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Algérie')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1962')">?</div>
+                    </div>
+                    <button class="btn" onclick="resetMemory('memory-game-3')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('memory3')">Retour</button>
+                </div>
+
+                <!-- Pendu Game -->
+                <div id="pendu3" class="game-container" style="display: none;">
+                    <h3>🎯 Pendu : Trouve le mot clé</h3>
+                    <div class="pendu-game">
+                        <div class="pendu-hangman" id="pendu-hangman-3">😊</div>
+                        <div class="pendu-word" id="pendu-word-3"></div>
+                        <div class="pendu-letters" id="pendu-letters-3"></div>
+                        <div id="pendu-message-3"></div>
+                    </div>
+                    <button class="btn" onclick="resetPendu('3')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('pendu3')">Retour</button>
+                </div>
+
+                <!-- Quiz -->
+                <div id="quiz3" class="game-container" style="display: none;">
+                    <h3>❓ QCM : Teste tes connaissances</h3>
+                    <div id="quiz-container-3"></div>
+                    <div id="quiz-feedback-3" class="quiz-feedback"></div>
+                    <button class="btn" onclick="resetQuiz('3')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('quiz3')">Retour</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thème 4 : L'environnement -->
+        <div id="theme4" class="tab-content">
+            <div class="section">
+                <h2>🌍 Thème 4 : L'environnement, entre exploitation et protection</h2>
+                <p><strong>Problématique</strong> : Comment les sociétés gèrent-elles les enjeux environnementaux entre exploitation des ressources et préservation de la planète ?</p>
+
+                <h3>📌 Notions clés</h3>
+                <div class="notion-box">
+                    <strong>Anthropocène</strong> : Ère géologique marquée par l’influence dominante de l’homme sur la Terre.
+                </div>
+                <div class="notion-box">
+                    <strong>Développement durable</strong> : Développement qui répond aux besoins du présent sans compromettre ceux des générations futures.
+                </div>
+                <div class="notion-box">
+                    <strong>GIEC</strong> : Groupe d’experts intergouvernemental sur l’évolution du climat (créé en 1988).
+                </div>
+                <div class="notion-box">
+                    <strong>COP (Conférence des Parties)</strong> : Réunions annuelles pour lutter contre le changement climatique (ex : COP21 en 2015 → Accord de Paris).
+                </div>
+                <div class="notion-box">
+                    <strong>Biodiversité</strong> : Variété des espèces vivantes et des écosystèmes, menacée par les activités humaines.
+                </div>
+
+                <h3>📅 Dates clés</h3>
+                <div class="date-box">1972 : Rapport Meadows (<em>Halte à la croissance</em>) → Alerte sur les limites de la croissance économique.</div>
+                <div class="date-box">1972 : Sommet de la Terre à Stockholm → Première conférence internationale sur l’environnement.</div>
+                <div class="date-box">1992 : Sommet de la Terre à Rio → Création de l’Agenda 21.</div>
+                <div class="date-box">1997 : Protocole de Kyoto → Premier accord international pour réduire les émissions de gaz à effet de serre.</div>
+                <div class="date-box">2015 : Accord de Paris (COP21) → Engagement de limiter le réchauffement à 2°C.</div>
+                <div class="date-box">2022 : COP27 à Charm el-Cheikh → Création d’un fonds pour les pertes et préjudices climatiques.</div>
+
+                <h3>🎯 Études de cas</h3>
+                <div class="example-box">
+                    <strong>Les États-Unis et l’environnement</strong>
+                    <ul>
+                        <li>Premier pollueur historique (CO₂).</li>
+                        <li>Retrait de l’Accord de Paris sous Trump (2017), retour sous Biden (2021).</li>
+                        <li>Politiques contrastées : protection des parcs nationaux vs. exploitation des énergies fossiles.</li>
+                    </ul>
+                </div>
+                <div class="example-box">
+                    <strong>La Chine : entre pollution et transition écologique</strong>
+                    <ul>
+                        <li>Premier émetteur de CO₂ (dépassement des États-Unis en 2006).</li>
+                        <li>Investissements massifs dans les énergies renouvelables (solaire, éolien).</li>
+                        <li>Projet de "civilisation écologique" (Xi Jinping).</li>
+                    </ul>
+                </div>
+
+                <h3>📚 Citations</h3>
+                <div class="citation">
+                    "Nous n’héritons pas de la Terre de nos ancêtres, nous l’empruntons à nos enfants." — Antoine de Saint-Exupéry
+                </div>
+                <div class="citation">
+                    "Le changement climatique est la plus grande menace à laquelle notre planète a jamais fait face." — Al Gore
+                </div>
+
+                <h3>🎮 Jeux et Quiz</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <button class="game-btn" onclick="showGame('memory4')">🧠 Memory (Accords/dates)</button>
+                    <button class="game-btn" onclick="showGame('pendu4')">🎯 Pendu (Mots clés)</button>
+                    <button class="quiz-btn" onclick="showGame('quiz4')">❓ QCM (10 questions)</button>
+                </div>
+
+                <!-- Memory Game -->
+                <div id="memory4" class="game-container" style="display: none;">
+                    <h3>🧠 Memory : Associe les accords aux dates</h3>
+                    <div class="memory-game" id="memory-game-4">
+                        <div class="memory-card" onclick="flipCard(this, 'Stockholm')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1972')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Rio')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1992')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Kyoto')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '1997')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, 'Paris')">?</div>
+                        <div class="memory-card" onclick="flipCard(this, '2015')">?</div>
+                    </div>
+                    <button class="btn" onclick="resetMemory('memory-game-4')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('memory4')">Retour</button>
+                </div>
+
+                <!-- Pendu Game -->
+                <div id="pendu4" class="game-container" style="display: none;">
+                    <h3>🎯 Pendu : Trouve le mot clé</h3>
+                    <div class="pendu-game">
+                        <div class="pendu-hangman" id="pendu-hangman-4">😊</div>
+                        <div class="pendu-word" id="pendu-word-4"></div>
+                        <div class="pendu-letters" id="pendu-letters-4"></div>
+                        <div id="pendu-message-4"></div>
+                    </div>
+                    <button class="btn" onclick="resetPendu('4')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('pendu4')">Retour</button>
+                </div>
+
+                <!-- Quiz -->
+                <div id="quiz4" class="game-container" style="display: none;">
+                    <h3>❓ QCM : Teste tes connaissances</h3>
+                    <div id="quiz-container-4"></div>
+                    <div id="quiz-feedback-4" class="quiz-feedback"></div>
+                    <button class="btn" onclick="resetQuiz('4')">Recommencer</button>
+                    <button class="btn" onclick="hideGame('quiz4')">Retour</button>
+                </div>
+            </div>
         </div>
     </div>
-    
+
     <footer>
-        <p><strong>HGGSP Bac 2026</strong> - Créé avec ❤️ pour toi par Vibe (Mistral AI)</p>
-        <p>Dernière mise à jour : juin 2026 | Programme officiel 2026</p>
+        <p><strong>HGGSP Bac 2026</strong> - Créé avec ❤️ pour toi | Juin 2026</p>
+        <p>Programme officiel 2026 | Tous droits réservés</p>
     </footer>
+
+    <script>
+        // Navigation entre les onglets
+        function showTab(tabId) {
+            // Masquer tous les onglets
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Masquer tous les jeux
+            const games = document.querySelectorAll('.game-container');
+            games.forEach(game => game.style.display = 'none');
+
+            // Désactiver tous les boutons de navigation
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => tab.classList.remove('active'));
+
+            // Afficher l'onglet sélectionné
+            document.getElementById(tabId).classList.add('active');
+
+            // Activer le bouton de navigation
+            event.target.classList.add('active');
+        }
+
+        // Jeux Memory
+        let flippedCards = [];
+        let matches = 0;
+
+        function flipCard(card, value) {
+            if (flippedCards.length < 2 && !card.classList.contains('flipped')) {
+                card.textContent = value;
+                card.classList.add('flipped');
+                flippedCards.push({ card, value });
+
+                if (flippedCards.length === 2) {
+                    setTimeout(checkMatch, 1000);
+                }
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            if (card1.value === card2.value) {
+                matches++;
+                flippedCards = [];
+                if (matches === 4) { // 4 paires par jeu
+                    setTimeout(() => {
+                        alert('Bravo ! Tu as gagné le Memory ! 🎉');
+                        resetMemory(`memory-game-${document.querySelector('.tab-content.active').id.replace('theme', '')}`);
+                    }, 500);
+                }
+            } else {
+                card1.card.textContent = '?';
+                card2.card.textContent = '?';
+                card1.card.classList.remove('flipped');
+                card2.card.classList.remove('flipped');
+                flippedCards = [];
+            }
+        }
+
+        function resetMemory(gameId) {
+            matches = 0;
+            const cards = document.querySelectorAll(`#${gameId} .memory-card`);
+            cards.forEach(card => {
+                card.textContent = '?';
+                card.classList.remove('flipped');
+            });
+        }
+
+        // Jeux Pendu
+        const penduWords = {
+            '1': ['WESTPHALIE', 'DIPLOMATIE', 'CLAUSewITZ', 'ONU', 'PAIX', 'GUERRE'],
+            '2': ['CHINE', 'ESPACE', 'OCEAN', 'SPACEX', 'NASA', 'ZEE'],
+            '3': ['GENOCIDE', 'TUTSI', 'NUREMBERG', 'MEMORIE', 'JUSTICE', 'ALGERIE'],
+            '4': ['GIEC', 'COP21', 'ANTHROPOCENE', 'BIODIVERSITE', 'CLIMAT', 'PARIS']
+        };
+
+        let penduWord = '';
+        let penduGuessed = [];
+        let penduErrors = 0;
+        let penduUsedLetters = [];
+
+        function resetPendu(theme) {
+            penduErrors = 0;
+            penduGuessed = [];
+            penduUsedLetters = [];
+            penduWord = penduWords[theme][Math.floor(Math.random() * penduWords[theme].length)];
+
+            document.getElementById(`pendu-word-${theme}`).textContent = '_ '.repeat(penduWord.length);
+            document.getElementById(`pendu-hangman-${theme}`).textContent = '😊';
+            document.getElementById(`pendu-letters-${theme}`).innerHTML = '';
+            document.getElementById(`pendu-message-${theme}`).textContent = '';
+
+            // Créer les lettres de l'alphabet
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                const letterElement = document.createElement('span');
+                letterElement.textContent = letter;
+                letterElement.className = 'pendu-letter';
+                letterElement.onclick = () => guessLetter(letter, theme);
+                document.getElementById(`pendu-letters-${theme}`).appendChild(letterElement);
+            }
+        }
+
+        function guessLetter(letter, theme) {
+            if (penduUsedLetters.includes(letter) || penduErrors >= 6) return;
+
+            penduUsedLetters.push(letter);
+            document.querySelectorAll(`#pendu-letters-${theme} .pendu-letter`).forEach(el => {
+                if (el.textContent === letter) {
+                    el.classList.add('used');
+                }
+            });
+
+            if (penduWord.includes(letter)) {
+                // Bonne lettre
+                penduWord.split('').forEach((char, index) => {
+                    if (char === letter) {
+                        penduGuessed[index] = letter;
+                    }
+                });
+                document.getElementById(`pendu-word-${theme}`).textContent = penduGuessed.map(l => l || '_').join(' ');
+
+                if (!penduGuessed.includes(undefined)) {
+                    document.getElementById(`pendu-message-${theme}`).textContent = 'Bravo ! Tu as gagné ! 🎉';
+                    document.querySelectorAll(`#pendu-letters-${theme} .pendu-letter`).forEach(el => {
+                        el.onclick = null;
+                    });
+                }
+            } else {
+                // Mauvaise lettre
+                penduErrors++;
+                updateHangman(theme);
+                if (penduErrors >= 6) {
+                    document.getElementById(`pendu-message-${theme}`).textContent = `Perdu ! Le mot était : ${penduWord}`;
+                    document.querySelectorAll(`#pendu-letters-${theme} .pendu-letter`).forEach(el => {
+                        el.onclick = null;
+                    });
+                }
+            }
+        }
+
+        function updateHangman(theme) {
+            const hangmanStates = ['😊', '😟', '😨', '😰', '😥', '😢', '💀'];
+            document.getElementById(`pendu-hangman-${theme}`).textContent = hangmanStates[penduErrors];
+        }
+
+        // Quiz
+        const quizQuestions = {
+            '1': [
+                { question: "Quel traité met fin aux guerres de religion en Europe en 1648 ?", options: ["Traité de Versailles", "Traité de Westphalie", "Traité de Vienne", "Traité de Rome"], answer: 1 },
+                { question: "Qui a écrit 'La guerre est la continuation de la politique par d’autres moyens' ?", options: ["Napoléon", "Clausewitz", "Sun Tzu", "Machiavel"], answer: 1 },
+                { question: "Quelle organisation a été créée en 1945 pour maintenir la paix mondiale ?", options: ["OTAN", "SDN", "ONU", "UE"], answer: 2 },
+                { question: "Quel conflit a marqué le retour de la guerre interétatique en Europe en 2022 ?", options: ["Guerre en Syrie", "Guerre en Ukraine", "Guerre en Irak", "Guerre en Afghanistan"], answer: 1 },
+                { question: "Quel est l’objectif principal de la diplomatie ?", options: ["Faire la guerre", "Éviter ou résoudre les conflits", "Conquérir des territoires", "Détruire l’ennemi"], answer: 1 }
+            ],
+            '2': [
+                { question: "Quel pays a lancé le premier satellite (Spoutnik) en 1957 ?", options: ["États-Unis", "URSS", "Chine", "France"], answer: 1 },
+                { question: "Quelle convention de 1982 régit le droit de la mer ?", options: ["Convention de Genève", "Convention de Montego Bay", "Convention de Paris", "Convention de New York"], answer: 1 },
+                { question: "Quel acteur privé est connu pour ses fusées réutilisables ?", options: ["NASA", "ESA", "SpaceX", "Roscosmos"], answer: 2 },
+                { question: "Quelle est la largeur d’une Zone Économique Exclusive (ZEE) ?", options: ["50 miles", "100 miles", "200 miles", "300 miles"], answer: 2 },
+                { question: "Quel pays a envoyé le premier taïkonaute dans l’espace en 2003 ?", options: ["Japon", "Inde", "Chine", "Corée du Sud"], answer: 2 }
+            ],
+            '3': [
+                { question: "Quel procès a jugé les dirigeants nazis en 1945-1946 ?", options: ["Procès de Tokyo", "Procès de Nuremberg", "Procès de La Haye", "Procès de Paris"], answer: 1 },
+                { question: "Quel génocide a eu lieu au Rwanda en 1994 ?", options: ["Génocide des Arméniens", "Génocide des Tutsis", "Génocide des Juifs", "Génocide des Rohingyas"], answer: 1 },
+                { question: "Quelle cour a été créée par le Statut de Rome en 1998 ?", options: ["Cour de Justice Internationale", "Cour Pénale Internationale", "Tribunal de La Haye", "Tribunal de Nuremberg"], answer: 1 },
+                { question: "Quel concept désigne l’obligation morale de se souvenir des événements traumatiques ?", options: ["Devoir de mémoire", "Devoir d’histoire", "Devoir de justice", "Devoir de vérité"], answer: 0 },
+                { question: "Quel pays a reconnu tardivement la guerre d’Algérie comme un conflit ?", options: ["Allemagne", "Espagne", "France", "Royaume-Uni"], answer: 2 }
+            ],
+            '4': [
+                { question: "Quel rapport de 1972 a alerté sur les limites de la croissance économique ?", options: ["Rapport Brundtland", "Rapport Meadows", "Rapport Stern", "Rapport GIEC"], answer: 1 },
+                { question: "Quel accord a été signé lors de la COP21 en 2015 ?", options: ["Protocole de Kyoto", "Accord de Paris", "Accord de Copenhague", "Accord de Rio"], answer: 1 },
+                { question: "Quel est le premier émetteur historique de CO₂ ?", options: ["Chine", "États-Unis", "Inde", "Russie"], answer: 1 },
+                { question: "Quel terme désigne l’ère géologique marquée par l’influence de l’homme ?", options: ["Holocène", "Pléistocène", "Anthropocène", "Miocène"], answer: 2 },
+                { question: "Quel organisme étudie l’évolution du climat ?", options: ["ONU", "GIEC", "OCDE", "OMM"], answer: 1 }
+            ]
+        };
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function showGame(gameId) {
+            // Masquer tous les jeux
+            const games = document.querySelectorAll('.game-container');
+            games.forEach(game => game.style.display = 'none');
+
+            // Afficher le jeu sélectionné
+            document.getElementById(gameId).style.display = 'block';
+
+            // Initialiser le jeu
+            if (gameId.startsWith('memory')) {
+                resetMemory(`memory-game-${gameId.replace('memory', '')}`);
+            } else if (gameId.startsWith('pendu')) {
+                resetPendu(gameId.replace('pendu', ''));
+            } else if (gameId.startsWith('quiz')) {
+                resetQuiz(gameId.replace('quiz', ''));
+            }
+        }
+
+        function hideGame(gameId) {
+            document.getElementById(gameId).style.display = 'none';
+        }
+
+        function resetQuiz(theme) {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById(`quiz-container-${theme}`).innerHTML = '';
+            document.getElementById(`quiz-feedback-${theme}`).style.display = 'none';
+            showQuestion(theme);
+        }
+
+        function showQuestion(theme) {
+            if (currentQuestion >= quizQuestions[theme].length) {
+                document.getElementById(`quiz-feedback-${theme}`).textContent = `Quiz terminé ! Ton score : ${score}/${quizQuestions[theme].length} 🎉`;
+                document.getElementById(`quiz-feedback-${theme}`).className = 'quiz-feedback correct';
+                document.getElementById(`quiz-feedback-${theme}`).style.display = 'block';
+                return;
+            }
+
+            const question = quizQuestions[theme][currentQuestion];
+            const quizContainer = document.getElementById(`quiz-container-${theme}`);
+
+            quizContainer.innerHTML = `
+                <div class="quiz-question">${currentQuestion + 1}. ${question.question}</div>
+                <div class="quiz-options">
+                    ${question.options.map((option, index) => `
+                        <div class="quiz-option" onclick="selectAnswer(${index}, '${theme}', ${question.answer})">
+                            ${option}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function selectAnswer(selectedIndex, theme, correctIndex) {
+            const options = document.querySelectorAll(`#quiz-container-${theme} .quiz-option`);
+            options[selectedIndex].classList.add('selected');
+
+            if (selectedIndex === correctIndex) {
+                score++;
+                options[selectedIndex].classList.add('correct');
+                document.getElementById(`quiz-feedback-${theme}`).textContent = 'Bonne réponse ! ✅';
+                document.getElementById(`quiz-feedback-${theme}`).className = 'quiz-feedback correct';
+            } else {
+                options[selectedIndex].classList.add('incorrect');
+                options[correctIndex].classList.add('correct');
+                document.getElementById(`quiz-feedback-${theme}`).textContent = `Mauvaise réponse. La bonne réponse était : ${quizQuestions[theme][currentQuestion].options[correctIndex]}`;
+                document.getElementById(`quiz-feedback-${theme}`).className = 'quiz-feedback incorrect';
+            }
+
+            document.getElementById(`quiz-feedback-${theme}`).style.display = 'block';
+
+            setTimeout(() => {
+                currentQuestion++;
+                showQuestion(theme);
+            }, 1500);
+        }
+
+        // Initialiser les jeux au chargement
+        window.onload = function() {
+            // Initialiser les Memory
+            for (let i = 1; i <= 4; i++) {
+                resetMemory(`memory-game-${i}`);
+            }
+        };
+    </script>
 </body>
 </html>
